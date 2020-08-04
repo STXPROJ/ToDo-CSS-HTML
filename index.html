@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="./Assets/css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="ModalComponent" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-center modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalComponent-Title">Nueva Tarea</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" class="">&times;</span>
+          </button>
+                </div>
+                <div class="modal-body" id="ModalComponent-Body">
+                    <input type="hidden" id="IdTarea" />
+                    <div class="ml-input-group">
+                        <label for="Titulo" class="ml-label">Titulo</label>
+                        <input type="text" class="ml-input-form ml-input requerido valid-length" data-max-length=40 id="Titulo" name="Titulo" />
+                        <label class="text-muted invalid-message"></label>
+                    </div>
+                    <div class="ml-input-group">
+                        <label for="Estado" class="ml-label">Estado</label>
+                        <select id="Estado" class="ml-input-form ml-select requerido">
+                                <option value=false>Pendiente</option>
+                                <option value=true>Completado</option>
+                            </select>
+                    </div>
+                    <div class="ml-input-group">
+                        <label for="Titulo" class="ml-label">Descripcion</label>
+                        <textarea class="ml-input-form ml-textarea requerido" id="Descripcion" name="Descripcion"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="action-button btn-new-hover" id="btnModalSave">Guardar</button>
+                    <button type="button" class="action-button btn-del-hover" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main class="container-fluid">
+
+
+        <section class="bg-content">
+            <div class="bg-1"></div>
+            <div class="bg-2"></div>
+        </section>
+
+        <header></header>
+
+        <section class="page-content">
+
+            <div class="content shadow">
+                <h1 class="content-title">To-Do List APP</h1>
+                <aside class="asideBar">
+                    <button class="aside-button btn-new-hover" id="btnNew">
+                    <i class="fa-2x fa fa-newspaper aside-button-icon"></i>
+                    <p class="aside-button-title">Nueva Tarea</p>
+                    </button>
+                    <button class="aside-button" id="btnEdit" disabled> 
+                            <i class="fa-2x fa fa-newspaper aside-button-icon"></i>
+                            <p class="aside-button-title">Modificar Tarea</p> 
+                    </button>
+                    <button class="aside-button btn-del-hover" id="btnDelete"> 
+                        <i class="fa-2x fa fa-newspaper aside-button-icon"></i>
+                        <p class="aside-button-title">Eliminar Tarea</p> 
+                    </button>
+                    <button class="aside-button btn-complete-hover" id="btnComplete"> 
+                        <i class="fa-2x fa fa-newspaper aside-button-icon"></i>
+                        <p class="aside-button-title">Marcar Completadas</p> 
+                    </button>
+                    <button class="aside-button btn-pending-hover" id="btnPending"> 
+                        <i class="fa-2x fa fa-newspaper aside-button-icon"></i>
+                        <p class="aside-button-title">Marcar Pendientes</p> 
+                    </button>
+                </aside>
+
+                <section class="task-container">
+                    <section class="task-header">
+                        <label class="checkbox-label task-header-checkbox">
+                                <input type="checkbox" id="chk-tasks" />
+                                <span class="checkbox-custom"></span>
+                            </label>
+                        <p class="task-header-title">Titulo</p>
+                        <p class="task-header-option">Estado</p>
+                        <hr/>
+                    </section>
+                    <section class="task-list scroll">
+                        <ul id="tasks">
+                        </ul>
+                        <article class="sin-tareas">
+                            <p class="text-center text-muted">
+                                No se encontro ninguna tarea.
+                            </p>
+                        </article>
+                    </section>
+
+
+                </section>
+                <div class="actionbar">
+                    <button type="button" class="action-button" id="btnFilterAll">
+                        <i class=" fa fa-th-list" ></i>&nbsp; Todas
+                    </button>
+                    <button type="button" class="action-button" id="btnFilterCompleted"><i class="far fa-check-circle" ></i>&nbsp;Completadas</button>
+                    <button type="button" class="action-button" id="btnFilterPending"><i class="fa fa-calendar-minus"></i>&nbsp; Incompletas</button>
+
+                </div>
+
+
+
+
+
+            </div>
+        </section>
+        <footer>
+            <section class="copyright">
+                <article class="copyright-text">
+                    &copy; STX &nbsp;&nbsp; DEVS
+
+                </article>
+            </section>
+            <section class="mobile-actionbar">
+                <div class="mb-action">
+
+                    <input type="checkbox" id="mb-toggle" checked/>
+
+                    <label class="mb-button" for="mb-toggle"></label>
+                    <nav class="mb-actionbar-nav">
+                        <ul class="mb-nav-list">
+                            <li title="Nueva Tarea" class="mb-nav-item bg-color" id="mb-btn-new" id="mb-btn-new"><i class="fa fa-plus"></i> </li>
+                            <li title="Modificar Tarea" class="mb-nav-item bg-color" id="mb-btn-edit"><i class="fa fa-pencil-alt"></i> </li>
+                            <li title="Eliminar Tarea" class="mb-nav-item bg-color" id="mb-btn-delete"><i class="fa fa-trash"></i> </li>
+                            <li title="Marcar Completadas" class="mb-nav-item bg-color" id="mb-btn-complete"><i class="fas fa-check"></i> </li>
+                            <li title="Marcar Pendientes" class="mb-nav-item bg-color" id="mb-btn-pending"><i class="fa fa-minus"></i> </li>
+                        </ul>
+                    </nav>
+                </div>
+            </section>
+
+        </footer>
+
+    </main>
+</body>
+<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script type="module" src="./Assets/js/main.js">
+    window.setCompletadas();
+</script>
+
+</html>

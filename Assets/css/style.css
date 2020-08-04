@@ -1,0 +1,1332 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+ :root {
+    --color1: white;
+    --color2: #272932;
+    --color3: rgba(15, 14, 14, 0.5);
+    --color4: #113537;
+    --color5: #45C5D9;
+    --color6: #D4C5C7;
+    --color7: #15A0A2;
+    --color8: #0BD55C;
+    --color9: #FEAD34;
+    --color10: #113537;
+    --color11: #ED1C24;
+    --color12: #F04248;
+    --color13: #00A896;
+    --color14: linear-gradient(90deg, rgba(69, 197, 217, 1) 0%, rgba(39, 41, 50, 1) 35%, rgba(21, 160, 162, 1) 100%);
+}
+
+*:not(.modal>*) {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+body:not(.modal>*) {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.container-fluid {
+    width: 100% !important;
+    display: grid !important;
+    /* grid-template-columns: repeat(4, 1fr); */
+    grid-template-columns: .5fr 1fr !important;
+    /* grid-template-rows: 4em 1fr 2em; */
+    grid-template-rows: 1fr 3em !important;
+    grid-template-areas: "content content" "footer footer " !important;
+    gap: 1em;
+    height: 100vh !important;
+    padding: 0 !important;
+}
+
+
+/* width */
+
+ ::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+/* Track */
+
+ ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+
+/* Handle */
+
+ ::-webkit-scrollbar-thumb {
+    /* background: rgba(239, 118, 122, .8); */
+    background: rgba(0, 168, 150, .8)
+}
+
+
+/* Handle on hover */
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: var(--color13);
+}
+
+.bg-content {
+    z-index: -1;
+    position: absolute;
+    width: 100vw;
+    display: grid;
+    /* grid-template-columns: repeat(4, 1fr); */
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "bg1 bg2 ";
+    height: 100vh;
+}
+
+.bg-1 {
+    grid-area: bg1;
+    background-color: var(--color13);
+}
+
+.bg-2 {
+    grid-area: bg2;
+}
+
+.bg-color {
+    background-color: var(--color13);
+    color: var(--color2);
+}
+
+.btn-new {
+    background-color: var(--color5) !important;
+}
+
+.btn-new-hover:hover {
+    background-color: var(--color5);
+    color: var(--color1);
+}
+
+.btn-edit {
+    background-color: var(--color9) !important;
+}
+
+.btn-edit-hover:hover {
+    background-color: var(--color9);
+    /* color: var(--color1); */
+}
+
+.btn-del {
+    background-color: var(--color12) !important;
+}
+
+.btn-del-hover:hover {
+    background-color: var(--color12);
+    color: var(--color1);
+}
+
+.btn-complete {
+    background-color: var(--color8) !important;
+}
+
+.btn-complete-hover:hover {
+    background-color: var(--color8);
+    color: var(--color1);
+}
+
+.btn-pending {
+    background-color: var(--color6) !important;
+}
+
+.btn-pending-hover:hover {
+    background-color: var(--color6);
+    /* color: var(--color1); */
+}
+
+.clr-white {
+    color: var(--color1);
+}
+
+.clr-dark {
+    color: var(--color2);
+}
+
+.disabled {
+    cursor: not-allowed !important;
+}
+
+.shadow {
+    box-shadow: var(--color3) 0 3px 3px;
+}
+
+.scroll {
+    overflow: auto;
+}
+
+header {
+    grid-area: header;
+}
+
+.page-content {
+    grid-area: content;
+}
+
+.content {
+    margin: 1em auto !important;
+    height: 100% !important;
+    width: 80% !important;
+    background-color: var(--color1) !important;
+    border-radius: 15px !important;
+    display: grid;
+    gap: .5em;
+    grid-template-areas: "title title title" "button-list line task" "button-list line actionbar";
+    grid-template-rows: 5em 24em auto;
+    grid-template-columns: .55fr 1em 1.5fr;
+}
+
+.content-title {
+    grid-area: title;
+    font-family: 'Permanent Marker', cursive;
+    margin: 0 auto !important;
+    font-size: 44px;
+    cursor: default;
+    color: var(--color2)
+}
+
+.asideBar {
+    width: 100% !important;
+    margin: 0 1em !important;
+    height: 95% !important;
+    grid-area: button-list;
+    /* background-color: var(--color4); */
+    border-radius: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: var(--color3) 2px 2px 4px 2px;
+    font-size: 16px !important;
+}
+
+.aside-button {
+    cursor: pointer;
+    transition: all 400ms ease-out;
+    min-width: 12em;
+    height: 5em;
+    margin: auto auto;
+    padding: .5rem 1rem;
+    border: 0.1em solid var(--color2);
+    background-color: transparent;
+    text-decoration: none;
+    border-radius: 5px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    outline: none !important;
+    font-size: 1em;
+}
+
+.aside-button>* {
+    font-weight: 700;
+}
+
+.aside-button:hover {
+    transition: all 200ms ease-out;
+    min-width: 14em;
+    border: .25em solid var(--color3);
+}
+
+.aside-button-icon {
+    flex: 1 0 0;
+}
+
+.aside-button-title {
+    flex: 1 0 0;
+    /* font-size: 12px; */
+}
+
+.task-container {
+    width: 100%;
+    height: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    /* margin: 1em 0 !important; */
+    grid-area: task;
+    display: grid;
+    grid-template-areas: "task-header" "task-list";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 1em;
+}
+
+.task-header {
+    height: 100%;
+    width: 95% !important;
+    grid-area: task-header;
+    transition: all 300ms;
+    /* border-left: 1em solid transparent !important; */
+    margin: 0 1em !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-flow: row wrap !important;
+    justify-content: center;
+    align-content: flex-start;
+    align-items: flex-start;
+    background-color: transparent;
+    font-size: 22px !important;
+}
+
+.task-header>* {
+    font-size: 1em !important;
+    font-weight: bold;
+    margin: 0 !important;
+}
+
+.task-header-title {
+    flex: 0 0 30%;
+    margin: 0 .5em;
+    text-align: center;
+}
+
+.task-header-option {
+    flex: 0 0 48%;
+    /* margin: 0 .5em; */
+    text-align: right;
+}
+
+hr {
+    margin: 0 1em !important;
+    flex: 0 0 95%;
+    color: black;
+    border: 2px solid var(--color2);
+}
+
+.task-header-line {
+    flex: 1 0 100%;
+    border: 1em solid black
+}
+
+.task-list {
+    grid-area: task-list;
+    width: 95% !important;
+    height: 100% !important;
+}
+
+.sin-tareas {
+    transition: all 500ms ease-in-out;
+    width: 100%;
+    height: 280px;
+    background-image: url("../img/no-tarea.svg");
+    background-size: 50% 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.task-list ul {
+    text-decoration: none !important;
+    list-style: none !important;
+    display: flex !important;
+    flex-flow: column nowrap;
+    /* justify-content: space-evenly; */
+    align-content: center;
+}
+
+.task {
+    transition: all 300ms;
+    box-shadow: 0 6px 6px -6px gray;
+    border-left: 1em solid var(--color5);
+    border-radius: 15px;
+    margin: .5em 0;
+    padding: .8rem 1rem !important;
+    display: flex !important;
+    flex-flow: row wrap !important;
+    background-color: transparent;
+    font-size: 18px !important;
+}
+
+.task-title {
+    transition: all 300ms;
+    margin: 0 .5em;
+    align-self: center;
+    font-size: 1em !important;
+    font-weight: bold;
+    text-align: justify;
+    flex: 1 0 0;
+    cursor: pointer;
+    word-wrap: break-word !important;
+    overflow: hidden;
+    line-height: 1.5em !important;
+}
+
+.task-icon {
+    transition: all 300ms;
+    margin-left: auto !important;
+    cursor: pointer;
+}
+
+.task-description {
+    display: none;
+    padding: 0 1rem !important;
+    margin: 1em .5em;
+    flex: 1 0 100%;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+
+.task-selected {
+    transition: all 200ms ease-in;
+    background-color: var(--color4);
+    color: var(--color1)
+}
+
+.task-completed>.icon {
+    transition: all 200ms ease-out;
+    color: var(--color8);
+}
+
+.actionbar {
+    margin: 0 auto !important;
+    padding: 0 auto !important;
+    height: 100% !important;
+    width: 100% !important;
+    grid-area: actionbar;
+    display: flex !important;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 18px !important;
+}
+
+.action-button {
+    transition: all 500ms ease-in-out;
+    margin: 0 .5em !important;
+    padding: .5rem 2rem !important;
+    text-align: center;
+    background-color: var(--color1);
+    box-shadow: var(--color2) 1px 1px 2px 1px;
+    border: .2em solid transparent;
+    font-size: 1em !important;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    user-select: none;
+    overflow: visible;
+    text-transform: none;
+    outline: none !important;
+}
+
+.action-button:hover,
+.action-button:focus-within {
+    transition: all 400ms ease-out !important;
+    border: .2em solid var(--color1) !important;
+    background-color: var(--color7) !important;
+    color: var(--color1)!important;
+}
+
+#ModalComponent-Body {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    align-content: space-around;
+}
+
+.ml-input-group {
+    margin: 0 1em;
+    flex: 1 0 45%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    align-content: space-between;
+}
+
+.ml-input-group:nth-child(3) {
+    flex: 0 0 30%
+}
+
+.ml-input-group:nth-child(4) {
+    flex: 0 0 100%;
+}
+
+.ml-label {
+    margin: 0;
+}
+
+.ml-input-form {
+    transition: all 150ms ease-in-out;
+    box-sizing: border-box;
+    color: #333;
+    margin: 1em auto;
+    width: 100%;
+    border-radius: 0.2rem;
+    background-color: var(--color1);
+    border: none;
+    outline: none;
+    height: 2.5em;
+    line-height: 2em;
+}
+
+.ml-input {
+    border-bottom: 0.3rem solid var(--color2);
+    border-right: 0.3rem solid var(--color2);
+}
+
+.ml-select {
+    border: 0.3rem solid var(--color2);
+}
+
+.ml-textarea {
+    outline: none;
+    height: 7.5em;
+    border: 0.3rem solid var(--color2);
+}
+
+.invalid-message {
+    color: var(--color11) !important;
+}
+
+.invalid-input {
+    border-right: 0.2rem solid var(--color11);
+    border-bottom: 0.2rem solid var(--color11);
+}
+
+.invalid-textarea,
+.invalid-select {
+    border: 0.2rem solid var(--color11);
+}
+
+.ml-textarea:focus-within {
+    border: 0.2rem solid var(--color7);
+}
+
+.ml-input:focus-within {
+    transition: all 150ms ease-in-out;
+    border-bottom: 0.2rem solid var(--color7);
+    border-right: 0.2rem solid var(--color7);
+}
+
+
+/* CHECKBOX UNCHECKED STYLE */
+
+.checkbox-label {
+    position: relative;
+    margin: 2px 0;
+    flex: 0 0 7%;
+}
+
+.checkbox-label input {
+    /* position: absolute; */
+    opacity: 0;
+    /* cursor: pointer; */
+}
+
+.checkbox-label .checkbox-custom {
+    margin: 5px 0;
+    cursor: pointer;
+    position: absolute;
+    /* top: 0px;
+    left: 0px; */
+    height: 24px;
+    width: 24px;
+    background-color: transparent;
+    border-radius: 5px;
+    border: 2px solid var(--color2);
+    /* transition */
+    transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+}
+
+.checkbox-label .checkbox-custom::after {
+    position: absolute;
+    content: "";
+    /* left: 12px;
+    top: 12px; */
+    height: 0px;
+    width: 0px;
+    border-radius: 5px;
+    border: solid var(--color1);
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(6deg) scale(0);
+    -ms-transform: rotate(0deg) scale(0);
+    transform: rotate(0deg) scale(0);
+    opacity: 1;
+    transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+}
+
+
+/* CHECKBOX CHECKED STYLE */
+
+.checkbox-label input:checked~.checkbox-custom {
+    background-color: var(--color2);
+    border-radius: 5px;
+    -webkit-transform: rotate(6deg) scale(1);
+    -ms-transform: rotate(0deg) scale(1);
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+    border: 2px solid var(--color1);
+}
+
+.checkbox-label input:checked~.checkbox-custom::after {
+    -webkit-transform: rotate(45deg) scale(1);
+    -ms-transform: rotate(45deg) scale(1);
+    transform: rotate(45deg) scale(1);
+    opacity: 1;
+    left: 8px;
+    top: 3px;
+    width: 6px;
+    height: 12px;
+    border: solid var(--color1);
+    border-width: 0 2px 2px 0;
+    background-color: transparent;
+    border-radius: 0;
+}
+
+footer {
+    grid-area: footer;
+    /* margin: 1em auto; */
+    /* display: grid;
+        grid-template-columns: repeat(4, 1fr); */
+    height: 100% !important;
+    width: 100% !important;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.copyright {
+    width: 100% !important;
+    display: flex;
+    justify-content: center;
+}
+
+.copyright-text {
+    /* grid-column: 1/5; */
+    margin: 8px auto !important;
+    font-weight: bold;
+    font-size: 16px;
+    border: 5px double var(--color2);
+    border-radius: 15px;
+    padding: 0 1em;
+    text-align: right;
+    text-decoration: none;
+    cursor: default;
+    width: 10em !important;
+    height: 2em !important;
+}
+
+.mobile-actionbar {
+    display: none;
+}
+
+.mb-action {
+    width: 20%;
+    margin: 0 auto !important;
+    display: flex !important;
+    flex-flow: row wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+#mb-toggle {
+    -webkit-appearance: none;
+}
+
+.mb-button {
+    position: absolute;
+    z-index: 999;
+    width: 43px;
+    height: 43px;
+    background: var(--color13);
+    border-radius: 100%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 2em !important;
+    /* top: -12px */
+}
+
+.mb-button::before {
+    position: absolute;
+    content: "";
+    width: 20px;
+    height: 2px;
+    background: #fff;
+    transform: rotate(90deg);
+    transition: all 0.4s ease;
+}
+
+.mb-button::after {
+    position: absolute;
+    content: "";
+    width: 20px;
+    height: 2px;
+    background: #fff;
+    transition: all 0.4s ease;
+}
+
+.mb-actionbar-nav {
+    opacity: 0;
+    transition: all 0.4s ease-in-out;
+    /* width: 100%; */
+    /* border-radius: 5px; */
+    transform: translateY(-60%);
+    /* border: 1px solid #e4e4e4; */
+    /* padding: 10px; */
+}
+
+.mb-actionbar-nav ul {
+    width: 100% !important;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-flow: column;
+    flex-direction: column;
+    list-style-type: none;
+    align-items: center;
+}
+
+.mb-actionbar-nav ul li {
+    transition: all 300ms ease;
+    width: 34px !important;
+    height: 35px !important;
+    border-radius: 25px !important;
+    text-align: center;
+    margin: 10px 0 !important;
+    display: flex;
+    justify-content: center !important;
+    align-items: center;
+    box-shadow: 0 1px 1px 0 var(--color3);
+    cursor: pointer;
+}
+
+.mb-actionbar-nav a {
+    text-align: center;
+    /* margin: 20px 0;  */
+    color: var(--color8);
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 14px;
+}
+
+.mb-actionbar-nav a:hover {
+    color: var(--color10);
+}
+
+#mb-toggle:checked~.mb-actionbar-nav {
+    opacity: 1;
+    transform: translateY(-85%);
+}
+
+#mb-toggle:checked~.mb-button:before {
+    transform: rotate(225deg);
+}
+
+#mb-toggle:checked~.mb-button:after {
+    transform: rotate(135deg);
+}
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+@media only screen and (max-width: 414px) {
+    .container-fluid {
+        grid-template-columns: .5fr 1fr !important;
+        grid-template-rows: 1fr 3em !important;
+        margin: 0 !important
+    }
+    .page-content {
+        margin: 0 8px !important;
+        padding: 0 !important;
+        width: 96vw!important;
+    }
+    .content {
+        grid-template-areas: "title" "task" "actionbar" !important;
+        grid-template-rows: 5em 30em auto !important;
+        grid-template-columns: 1fr !important;
+        height: 100% !important;
+        width: 100% !important;
+        gap: 1em !important;
+        font-size: 14px !important;
+    }
+    .asideBar {
+        display: none;
+    }
+    /* 
+    .content {
+        grid-template-areas: "title" "task" "actionbar" !important;
+        grid-template-rows: 10% 75% 15% !important;
+        grid-template-columns: 1fr !important;
+        height: 100% !important;
+        width: 100% !important;
+        gap: 1em !important;
+        font-size: 14px !important;
+    } */
+    .bg-content {
+        height: 100% !important;
+    }
+    .copyright {
+        flex: 1 0 80% !important;
+        align-self: center;
+        justify-content: flex-end !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    .mobile-actionbar {
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+    .mb-action {
+        height: 8em !important;
+    }
+    /* .page-content {
+        margin: 0 1.5em !important
+    } */
+    .asideBar {
+        display: none;
+    }
+    .action-button {
+        font-size: 12px !important;
+        padding: .2rem 1rem !important;
+        flex: 0 0 1fr !important;
+    }
+    .sin-tareas {
+        height: 350px !important;
+        font-size: 24px !important;
+        justify-content: center !important;
+    }
+    .sin-tareas>* {
+        text-align: center;
+    }
+    .sin-tareas>p {
+        padding: 0 2em !important;
+    }
+    /*BEGIN  TASK LIST*/
+    .task-header {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 1.5em !important;
+        justify-content: flex-start;
+        font-size: 18px !important;
+    }
+    .task-header .checkbox-label {
+        margin: 0 !important;
+        flex: 0 !important;
+    }
+    .task-header .checkbox-label input:checked~.checkbox-custom {
+        border: 2px solid var(--color2) !important;
+    }
+    hr {
+        flex: 0 1 100% !important;
+    }
+    .task-header-title {
+        flex: 1 0 70% !important;
+        /* margin: 0 1em !important; */
+        font-size: 1em !important;
+    }
+    .task-header-option {
+        flex: 0 0 20% !important;
+        font-size: 1em !important;
+    }
+    .checkbox-custom {
+        height: 18px !important;
+        width: 18px !important;
+    }
+    .task {
+        padding: .5rem 0 !important;
+        font-size: 14px !important;
+    }
+    .task .checkbox-label {
+        margin: 0;
+        flex: 0 0 10% !important;
+    }
+    #tasks {
+        padding: 0 10px;
+    }
+    .task-title {
+        font-size: 1em !important;
+        word-wrap: break-word;
+        overflow: hidden;
+        line-height: 1.5em;
+    }
+    .task-icon {
+        font-size: 1em !important;
+        flex: 0 0 11%;
+    }
+    .task-description {
+        font-size: 1em !important;
+        display: none;
+        word-wrap: break-word;
+        overflow: hidden;
+    }
+    .task .checkbox-label .checkbox-custom {
+        margin: 8px 0 !important;
+    }
+    .checkbox-custom {
+        height: 18px !important;
+        width: 18px !important;
+    }
+    /* CHECKBOX CHECKED STYLE */
+    .checkbox-label input:checked~.checkbox-custom::after {
+        left: 4px;
+        top: 2px;
+        width: 6px;
+        height: 8px;
+    }
+    .content-title {
+        font-size: 36px !important;
+    }
+    .task-list {
+        width: 100% !important;
+    }
+    .task-icon {
+        font-size: 1em !important;
+        flex: 0 0 10% !important;
+    }
+    .ml-input-group {
+        font-size: 12px !important;
+    }
+    .container-fluid {
+        overflow-y: hidden;
+    }
+}
+
+@media only screen and (max-width: 480px) and (min-width: 415px) {
+    .container-fluid {
+        grid-template-columns: .5fr 1fr !important;
+        grid-template-rows: 1fr 3em !important;
+    }
+    .content {
+        grid-template-areas: "title" "task" "actionbar" !important;
+        grid-template-rows: 5em 24em auto !important;
+        grid-template-columns: 1fr !important;
+    }
+    .asideBar {
+        display: none;
+    }
+    .task {
+        font-size: 14px !important;
+    }
+    /*BEGIN  ACTION BUTTON*/
+    .actionbar {
+        align-items: flex-start;
+    }
+    .action-button {
+        font-size: 12px !important;
+        padding: .2rem 1rem !important;
+        flex: 0 0 1fr !important;
+    }
+    /*ENND  ACTION BUTTON*/
+    /*BEGIN  TASK LIST*/
+    /*BEGIN  TASK LIST*/
+    .task-header {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 1.5em !important;
+        justify-content: flex-start;
+        font-size: 18px !important;
+    }
+    .task-header .checkbox-label {
+        margin: 0 !important;
+        flex: 0 !important;
+    }
+    .task-header .checkbox-label input:checked~.checkbox-custom {
+        border: 2px solid var(--color2) !important;
+    }
+    hr {
+        flex: 0 1 100% !important;
+    }
+    .task-header-title {
+        flex: 1 0 70% !important;
+        /* margin: 0 1em !important; */
+        font-size: 1em !important;
+    }
+    .task-header-option {
+        flex: 0 0 20% !important;
+        font-size: 1em !important;
+    }
+    .checkbox-custom {
+        height: 18px !important;
+        width: 18px !important;
+    }
+    .task {
+        padding: .5rem 0 !important;
+    }
+    .task .checkbox-label {
+        margin: 0;
+        flex: 0 0 10% !important;
+    }
+    #tasks {
+        padding: 0 10px;
+        font-size: 16px !important;
+    }
+    .task-title {
+        font-size: 1em !important;
+        word-wrap: break-word;
+        overflow: hidden;
+        line-height: 1.5em;
+    }
+    .task-icon {
+        font-size: 1em !important;
+        flex: 0 0 10%;
+    }
+    .task-description {
+        font-size: 1em !important;
+        display: none;
+        word-wrap: break-word;
+        overflow: hidden;
+    }
+    /* CHECKBOX CHECKED STYLE */
+    .checkbox-label input:checked~.checkbox-custom::after {
+        left: 4px;
+        top: 2px;
+        width: 6px;
+        height: 8px;
+    }
+    .mobile-actionbar {
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+    .mb-action {
+        height: 8em !important;
+    }
+}
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+@media only screen and (max-width: 600px) and (min-width: 481px) {
+    .container-fluid {
+        grid-template-columns: .5fr 1fr !important;
+        grid-template-rows: 1fr 3em !important;
+    }
+    .content {
+        grid-template-areas: "title" "task" "actionbar" !important;
+        grid-template-rows: 5em 20em auto !important;
+        grid-template-columns: 1fr !important;
+    }
+    .asideBar {
+        display: none;
+    }
+    .task {
+        font-size: 16px !important;
+    }
+    /*BEGIN  TASK LIST*/
+    .task-header {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 1.5em !important;
+        justify-content: flex-start;
+        font-size: 18px !important;
+    }
+    .task-header .checkbox-label {
+        margin: 0 !important;
+        flex: 0 !important;
+    }
+    .task-header .checkbox-label input:checked~.checkbox-custom {
+        border: 2px solid var(--color2) !important;
+    }
+    hr {
+        flex: 0 1 100% !important;
+    }
+    .task-header-title {
+        flex: 1 0 70% !important;
+        /* margin: 0 1em !important; */
+        font-size: 1em !important;
+    }
+    .task-header-option {
+        flex: 0 0 20% !important;
+        font-size: 1em !important;
+    }
+    .task {
+        padding: .5rem 0 !important;
+    }
+    .task .checkbox-label {
+        margin: 0;
+        flex: 0 0 10% !important;
+    }
+    #tasks {
+        padding: 0 10px;
+        font-size: 16px !important;
+    }
+    .task-title {
+        font-size: 1em !important;
+        word-wrap: break-word;
+        overflow: hidden;
+        line-height: 1.5em;
+    }
+    .task-icon {
+        font-size: 1em !important;
+        flex: 0 0 9%;
+    }
+    .task-description {
+        font-size: 1em !important;
+        display: none;
+        word-wrap: break-word;
+        overflow: hidden;
+    }
+    .checkbox-custom {
+        height: 18px !important;
+        width: 18px !important;
+    }
+    .task .checkbox-label .checkbox-custom {
+        margin: 9px 0 !important;
+    }
+    /* CHECKBOX CHECKED STYLE */
+    .checkbox-label input:checked~.checkbox-custom::after {
+        left: 4px;
+        top: 2px;
+        width: 6px;
+        height: 8px;
+    }
+    /*END  TASK LIST*/
+    .actionbar {
+        font-size: 16px !important;
+    }
+    #ModalComponent-Body {
+        font-size: 15px !important;
+    }
+    .mobile-actionbar {
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+    .mb-action {
+        height: 8em !important;
+    }
+    .action-button {
+        padding: .2rem 1rem !important;
+    }
+}
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+
+@media only screen and (max-width: 768px) and (min-width: 601px) {
+    .container-fluid {
+        grid-template-rows: 88% 8% !important;
+    }
+    .page-content {
+        margin: 0 1em !important;
+        width: 100%;
+    }
+    .content {
+        width: 100% !important;
+        margin: 1em auto !important;
+        grid-template-rows: 5em 31em auto !important;
+        grid-template-columns: .55fr 0 1.5fr;
+        font-size: 12px !important;
+    }
+    /*BEGIN  ASIDE BAR*/
+    .asideBar {
+        height: 96% !important;
+        width: 80% !important;
+    }
+    .aside-button {
+        width: 10em !important;
+        height: 75px;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-size: 12px !important;
+    }
+    .aside-button:hover {
+        width: 10em !important;
+        padding: 0 !important;
+        border: none !important;
+    }
+    /* END ASIDE BAR */
+    /*BEGIN  TASK LIST*/
+    .task-header {
+        margin: 0 .5em !important;
+        padding: 0 1.5em !important;
+        justify-content: flex-start;
+        font-size: 18px !important;
+    }
+    .task-header .checkbox-label {
+        margin: 0 !important;
+        flex: 0 !important;
+    }
+    .task-header .checkbox-label input:checked~.checkbox-custom {
+        border: 2px solid var(--color2) !important;
+    }
+    .task-header-title {
+        flex: 1 0 70% !important;
+        /* margin: 0 1em !important; */
+        font-size: 1em !important;
+    }
+    .task-header-option {
+        flex: 0 0 20% !important;
+        font-size: 1em !important;
+    }
+    .task {
+        padding: .5rem 0 !important;
+    }
+    .task .checkbox-label {
+        margin: 0;
+        flex: 0 0 10% !important;
+    }
+    #tasks {
+        padding: 0 10px;
+        font-size: 16px !important;
+    }
+    .task-title {
+        font-size: 1em !important;
+        word-wrap: break-word;
+        overflow: hidden;
+        line-height: 1.5em;
+    }
+    .task-icon {
+        font-size: 1em !important;
+        flex: 0 0 9%;
+    }
+    .task-description {
+        font-size: 1em !important;
+        display: none;
+        word-wrap: break-word;
+        overflow: hidden;
+    }
+    .checkbox-custom {
+        height: 18px !important;
+        width: 18px !important;
+    }
+    .task .checkbox-label .checkbox-custom {
+        margin: 12px 0 !important;
+    }
+    /* CHECKBOX CHECKED STYLE */
+    .checkbox-label input:checked~.checkbox-custom::after {
+        left: 4px;
+        top: 2px;
+        width: 6px;
+        height: 8px;
+    }
+    /*END  TASK LIST*/
+    /*BEGIN  ACTION BUTTON*/
+    .actionbar {
+        align-items: flex-start;
+    }
+    .action-button {
+        padding: .2rem 1rem !important;
+    }
+    /*ENND  ACTION BUTTON*/
+    #ModalComponent-Body {
+        font-size: 15px !important;
+    }
+    .sin-tareas {
+        font-size: 18px !important;
+    }
+}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+
+@media only screen and (max-width: 992px) and (min-width: 769px) {
+    .container-fluid {
+        width: 100% !important;
+        display: grid !important;
+        /* grid-template-columns: repeat(4, 1fr); */
+        grid-template-columns: .5fr 1fr !important;
+        /* grid-template-rows: 4em 1fr 2em; */
+        grid-template-rows: 88% 8% !important;
+        grid-template-areas: "content content" "footer footer " !important;
+        gap: 1em;
+        height: 100vh !important;
+        padding: 0 !important;
+    }
+    .page-content {
+        grid-area: content;
+    }
+    .content {
+        margin: 1em auto !important;
+        grid-template-rows: 4em 22em auto;
+    }
+    /*BEGIN  ASIDE BAR*/
+    .asideBar {
+        height: 96% !important;
+    }
+    .aside-button {
+        box-sizing: border-box;
+        min-width: 10em;
+        height: 75px;
+        margin: 0 !important;
+        padding: 0 1rem;
+        justify-content: flex-start;
+    }
+    .aside-button:hover {
+        min-width: 5em;
+        padding: 0 1rem;
+        margin: 0 !important;
+    }
+    .aside-button-icon {
+        font-size: 22px;
+    }
+    .aside-button-title {
+        font-size: 15px;
+        text-align: center;
+        max-width: 6em;
+        font-weight: bold;
+    }
+    /* END ASIDE BAR */
+    /*BEGIN  TASK LIST*/
+    .task-list {
+        height: 100% !important;
+    }
+    .task-header {
+        margin: 0 .5em !important;
+        padding: 0 1em !important;
+        justify-content: flex-start;
+    }
+    .task-header-title {
+        flex: 0 1 40%;
+    }
+    .task-header-option {
+        flex: 0 0 50%;
+    }
+    hr {
+        flex: 0 0 100%;
+    }
+    #tasks {
+        padding: 0 10px;
+    }
+    .task {
+        padding: .5rem 0 !important;
+    }
+    .task .checkbox-label {
+        margin: 0;
+        flex: 0 0 10%;
+    }
+    .task-title {
+        font-size: 18px;
+        word-wrap: break-word;
+        overflow: hidden;
+        line-height: 1.5em;
+    }
+    .task-icon {
+        flex: 0 0 9%;
+    }
+    .task-description {
+        display: none;
+        word-wrap: break-word;
+        overflow: hidden;
+    }
+    /*END  TASK LIST*/
+    /*BEGIN  ACTION BUTTON*/
+    .actionbar {
+        align-items: flex-start;
+    }
+    .action-button {
+        padding: .2rem 1rem !important;
+    }
+    /*ENND  ACTION BUTTON*/
+}
